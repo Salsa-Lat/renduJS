@@ -1,6 +1,102 @@
+:root {
+  --primary: #5D3023;
+  --secondary: #C08453;
+  --main: #F4E0E0;
+  --bonus: #CF7128;
+  --logo : "Oleo Script Swash Caps", system-ui;
+  --text : "Inter", sans-serif;
+  --bs : 0 0 15px rgba(0, 0, 0, 0.21);
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+body {
+  font-family: var(--text);
+  background-color: var(--main);
+  color: var(--primary);
+}
+
+
+/* NAV BAR */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 25px 50px;
+  box-shadow: var(--bs);
+  text-align: center;
+}
+
+.logo-nav {
+  font-family: var(--logo);
+  font-size: 25px;
+  text-decoration: none;
+  color: var(--primary);
+}
+
+.navListDiv {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.navList {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.navList:hover {
+  text-decoration: underline;
+}
+
+.btn {
+  background-color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 10px 25px;
+  color: var(--main);
+  border-radius: 5px;
+  text-decoration: none;
+  transition: all 200ms;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: var(--main);
+  color: var(--primary);
+  transition: all 200ms;
+}
+
+
+/* HERO */
+
+#hero {
+  background-image: url("https://images.pexels.com/photos/205961/pexels-photo-205961.jpeg");
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: multiply;
+  color: var(--main);
+
+}
+
+.center-hero {
+  padding: 250px 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+}
+
+.center-hero h1 {
+  font-size: 48px;
+}
+
+
+/* PRODUCTS */
+
+.center-container {
+  
+}

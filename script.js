@@ -12,7 +12,11 @@ const avantage = document.getElementById('avantage');
 
 const temoignage = document.getElementById('temoignage');
 
+const foot = document.getElementById('foot');
+
 const list = ["Accueil", "Produits", "Services", "Avantages", "Temoignages"];
+
+const listHref = ["hero", "product", "service", "avantage", "temoignage"];
 
 
 // GET THE JSON
@@ -25,24 +29,22 @@ fetch(API_URL)
 
     // CREATE THE NAVBAR -- logo li button
       
-    const logo = document.createElement('p');
+    const logo = document.createElement('a');
+    logo.href = "";
     logo.innerHTML = data.nomCommercial;
-    //classList
+    logo.classList.add('logo-nav');
     nav.appendChild(logo);
 
-    const listNav = document.createElement('div');
-    //classList
-    nav.appendChild(listNav);
-
-    const linkNav = document.createElement('a');
-    //classList
-    list.forEach(element => {
-      linkNav.innerHTML += element;  
+    const linkNav = document.createElement('div');
+    linkNav.classList.add('navListDiv');
+    list.forEach((element, i) => {
+      linkNav.innerHTML += `<a href="#${listHref[i]}" class="navList">` + element + "</a>";  
     });
-    listNav.appendChild(linkNav);
+    nav.appendChild(linkNav);
 
     const button = document.createElement('a');
-    //classList
+    button.href = "";
+    button.classList.add('btn');
     button.innerHTML = data.texteAppelAction;
     nav.appendChild(button);
     
@@ -50,7 +52,7 @@ fetch(API_URL)
     // CREATE HERO -- slogan p button
 
     const heroContainer = document.createElement('div');
-    //classList
+    heroContainer.classList.add('center-hero');
     hero.appendChild(heroContainer);
 
     const h1 = document.createElement('h1');
@@ -65,14 +67,14 @@ fetch(API_URL)
 
     const heroBtn = document.createElement('a');
     heroBtn.innerHTML = data.texteAppelAction;
-    //classList
+    heroBtn.classList.add('btn');
     heroContainer.appendChild(heroBtn);
 
     
     // CREATE PRODUCT -- container (h2, p) and cards (name, desc, img)
 
     const centerContainer = document.createElement('div');
-    //classList
+    centerContainer.classList.add('center-container');
     product.appendChild(centerContainer);
 
     const productTitle = document.createElement('h2');
@@ -126,6 +128,53 @@ fetch(API_URL)
 
     //cards
 
+    data.services.forEach(serv => {
+      
+      const serviceCards = document.createElement('div');
+      //classList
+      serviceContainer.appendChild(serviceCards);
+      
+      const serviceName = document.createElement('h3');
+      serviceName.innerHTML = serv.nom;
+      serviceCards.appendChild(serviceName);
+
+      const serviceDesc = document.createElement('p');
+      //classList
+      serviceDesc.innerHTML = serv.description;
+      serviceCards.appendChild(serviceDesc);
+
+    });
+
+
+    // CREATE AVANTAGES -- container (h2, p) and cards (name, exp, comms, note)
+
+    const avantageCenterContainer = document.createElement('div');
+    //classList
+    avantage.appendChild(avantageCenterContainer);
+
+    const avantageTitle = document.createElement('h2');
+    avantageTitle.innerHTML = "Nos Avantages";
+    //classList
+    avantageCenterContainer.appendChild(avantageTitle);
+
+    const avantageContainer = document.createElement('div');
+    //classList
+    avantageCenterContainer.appendChild(avantageContainer);
+
+    //cards
+
+    data.avantagesClients.forEach(avantage => {
+      
+      const avantageCards = document.createElement('div');
+      //classList
+      avantageContainer.appendChild(avantageCards);
+
+      const avantagePara = document.createElement('p');
+      avantagePara.innerHTML = avantage;
+      avantageCards.appendChild(avantagePara);
+
+    });
+
     
     // CREATE TEMOIGNAGE -- container (h2, p) and cards (name, exp, comms, note)
 
@@ -144,56 +193,86 @@ fetch(API_URL)
 
     //cards
 
+    data.temoignages.forEach(temoi => {
+      
+      const temoignageCards = document.createElement('div');
+      //classList
+      temoignageCenterContainer.appendChild(temoignageCards);
+
+      const temoignageName = document.createElement('h3');
+      temoignageName.innerHTML = temoi.prenom;
+      temoignageCards.appendChild(temoignageName);
+
+      const temoignageExp = document.createElement('b');
+      temoignageExp.innerHTML = temoi.typeExperience;
+      temoignageCards.appendChild(temoignageExp);
+
+      const comms = document.createElement('p');
+      comms.innerHTML = temoi.commentaire;
+      temoignageCards.appendChild(comms);
+
+      const rating = document.createElement('p');
+      rating.innerHTML = temoi.note + "/5";
+      temoignageCards.appendChild(rating);
+
+    });
+
     
     // CREATE FOOTER -- logo icone - li - companyName - copyright cookie
 
+    const topFoot = document.createElement('div');
+    foot.appendChild(topFoot);;
+
+    const leftFoot = document.createElement('div');
+    topFoot.appendChild(leftFoot);
+
+    const logoFooter = document.createElement('a');
+    //classList
+    logoFooter.innerHTML = data.nomCommercial;
+    leftFoot.appendChild(logoFooter);
+
+    const icones = document.createElement('div');
+    //classList
+    leftFoot.appendChild(icones);
+
+    const icone = document.createElement('p');
+    icone.innerHTML = `
+      <i class="fa-brands fa-facebook"></i>
+      <i class="fa-brands fa-instagram"></i>
+      <i class="fa-brands fa-x-twitter"></i>
+      <i class="fa-brands fa-linkedin"></i>
+      <i class="fa-brands fa-youtube"></i>
+    `;
+    icones.appendChild(icone);
+
+    const rightFoot = document.createElement('div');
+    //classList
+    topFoot.appendChild(rightFoot);
+
+    const footList = document.createElement('a');
+    //classList
+    list.forEach(element => {
+      footList.innerHTML += element;  
+    });
+    rightFoot.appendChild(footList);
+
+    const bottomFoot = document.createElement('div');
+    //classList
+    foot.appendChild(bottomFoot);
+
+    const copyright = document.createElement('p');
+    //classList
+    copyright.innerHTML = `<i class="fa-regular fa-copyright"></i> 2025 - Salsabila LATASSE`;
+    bottomFoot.appendChild(copyright);
+
+    const cookie = document.createElement('div');
+    //classList
+    cookie.innerHTML = `
+    <a href="">Politique de confidentialité</a>
+    <a href="">Condition d'utilisation</a>
+    <a href="">Paramètres des cookies</a>
+    `;
+    bottomFoot.appendChild(cookie);
+
   })
   .catch(error => console.error('Erreur lors de la récupération des données :', error));
-
-
-  // const prodcutTitle = "lorem";
-  // const serviceTitle = "lorem";
-  // const avantageTitle = "lorem";
-  // const temoignageTitle = "lorem";
-
-  // function section(para, h2) {
-
-  // const centerContainer = document.createElement('div');
-  //   //classList
-  //   product.appendChild(centerContainer);
-
-  //   const title = document.createElement('h2');
-  //   productTitle.innerHTML = h2;
-  //   //classList
-  //   centerContainer.appendChild(title);
-
-  //   //ici
-
-  //   const container = document.createElement('div');
-  //   //classList
-  //   centerContainer.appendChild(container);
-
-  //   para.forEach(cake => {
-
-  //     const cards = document.createElement('div');
-  //     //classList
-  //     container.appendChild(cards);
-
-  //     const productCardsImage = document.createElement('img');
-  //     //classList
-  //     productCardsImage.src = cake["image-url"];
-  //     cards.appendChild(productCardsImage);
-
-  //     const productCardsName = document.createElement('h3');
-  //     //classList
-  //     productCardsName.innerHTML = cake.nom;
-  //     cards.appendChild(productCardsName);
-
-  //     const productDesc = document.createElement('p');
-  //     //classList
-  //     productDesc.innerHTML = cake.description;
-  //     cards.appendChild(productDesc);
-      
-  //   });    
-
-  // }
