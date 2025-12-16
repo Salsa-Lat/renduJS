@@ -18,6 +18,12 @@ const list = ["Accueil", "Produits", "Services", "Avantages", "Temoignages"];
 
 const listHref = ["hero", "product", "service", "avantage", "temoignage"];
 
+let count = 0;
+
+  for (let i = 0; i < 3; i++) {
+    count++;
+  }
+
 
 // GET THE JSON
 
@@ -79,11 +85,10 @@ fetch(API_URL)
 
     const productTitle = document.createElement('h2');
     productTitle.innerHTML = "Nos Patisserie";
-    //classList
     centerContainer.appendChild(productTitle);
 
     const productContainer = document.createElement('div');
-    //classList
+    productContainer.classList.add('container');
     centerContainer.appendChild(productContainer);
 
     //cards
@@ -91,21 +96,18 @@ fetch(API_URL)
     data.produits.forEach(cake => {
 
       const productCards = document.createElement('div');
-      //classList
+      productCards.classList.add('cards');
       productContainer.appendChild(productCards);
 
       const productCardsImage = document.createElement('img');
-      //classList
       productCardsImage.src = cake["image-url"];
       productCards.appendChild(productCardsImage);
 
       const productCardsName = document.createElement('h3');
-      //classList
       productCardsName.innerHTML = cake.nom;
       productCards.appendChild(productCardsName);
 
       const productDesc = document.createElement('p');
-      //classList
       productDesc.innerHTML = cake.description;
       productCards.appendChild(productDesc);
       
@@ -114,16 +116,15 @@ fetch(API_URL)
     // CREATE SERVICE -- container (h2, p) and cards (name, desc)
 
     const serviceCenterContainer = document.createElement('div');
-    //classList
+    serviceCenterContainer.classList.add('center-container');
     service.appendChild(serviceCenterContainer);
 
     const serviceTitle = document.createElement('h2');
     serviceTitle.innerHTML = "Nos Services";
-    //classList
     serviceCenterContainer.appendChild(serviceTitle);
 
     const serviceContainer = document.createElement('div');
-    //classList
+    serviceContainer.classList.add('container');
     serviceCenterContainer.appendChild(serviceContainer);
 
     //cards
@@ -131,7 +132,7 @@ fetch(API_URL)
     data.services.forEach(serv => {
       
       const serviceCards = document.createElement('div');
-      //classList
+      serviceCards.classList.add('service-cards');
       serviceContainer.appendChild(serviceCards);
       
       const serviceName = document.createElement('h3');
@@ -139,7 +140,6 @@ fetch(API_URL)
       serviceCards.appendChild(serviceName);
 
       const serviceDesc = document.createElement('p');
-      //classList
       serviceDesc.innerHTML = serv.description;
       serviceCards.appendChild(serviceDesc);
 
@@ -149,25 +149,29 @@ fetch(API_URL)
     // CREATE AVANTAGES -- container (h2, p) and cards (name, exp, comms, note)
 
     const avantageCenterContainer = document.createElement('div');
-    //classList
+    avantageCenterContainer.classList.add('center-container');
     avantage.appendChild(avantageCenterContainer);
 
     const avantageTitle = document.createElement('h2');
     avantageTitle.innerHTML = "Nos Avantages";
-    //classList
     avantageCenterContainer.appendChild(avantageTitle);
 
     const avantageContainer = document.createElement('div');
-    //classList
+    avantageContainer.classList.add('container');
     avantageCenterContainer.appendChild(avantageContainer);
 
     //cards
 
-    data.avantagesClients.forEach(avantage => {
+    data.avantagesClients.forEach((avantage, count) => {
       
       const avantageCards = document.createElement('div');
-      //classList
+      avantageCards.classList.add('service-cards');
+      avantageCards.classList.add('avantage-cards');
       avantageContainer.appendChild(avantageCards);
+
+      const avantageTitle = document.createElement('h3');
+      avantageTitle.innerHTML = `Avantage ${count + 1}`;
+      avantageCards.appendChild(avantageTitle);
 
       const avantagePara = document.createElement('p');
       avantagePara.innerHTML = avantage;
@@ -179,16 +183,15 @@ fetch(API_URL)
     // CREATE TEMOIGNAGE -- container (h2, p) and cards (name, exp, comms, note)
 
     const temoignageCenterContainer = document.createElement('div');
-    //classList
+    temoignageCenterContainer.classList.add('center-container');
     temoignage.appendChild(temoignageCenterContainer);
 
     const temoignageTitle = document.createElement('h2');
     temoignageTitle.innerHTML = "Vos Temoignages";
-    //classList
     temoignageCenterContainer.appendChild(temoignageTitle);
 
     const temoignageContainer = document.createElement('div');
-    //classList
+    temoignageContainer.classList.add('container');
     temoignageCenterContainer.appendChild(temoignageContainer);
 
     //cards
@@ -196,8 +199,9 @@ fetch(API_URL)
     data.temoignages.forEach(temoi => {
       
       const temoignageCards = document.createElement('div');
-      //classList
-      temoignageCenterContainer.appendChild(temoignageCards);
+      temoignageCards.classList.add('service-cards');
+      temoignageCards.classList.add('avantage-cards');
+      temoignageContainer.appendChild(temoignageCards);
 
       const temoignageName = document.createElement('h3');
       temoignageName.innerHTML = temoi.prenom;
@@ -221,13 +225,15 @@ fetch(API_URL)
     // CREATE FOOTER -- logo icone - li - companyName - copyright cookie
 
     const topFoot = document.createElement('div');
+    topFoot.classList.add('top-foot');
     foot.appendChild(topFoot);;
 
     const leftFoot = document.createElement('div');
     topFoot.appendChild(leftFoot);
 
     const logoFooter = document.createElement('a');
-    //classList
+    logoFooter.href = '#hero';
+    logoFooter.classList.add('logo-nav');
     logoFooter.innerHTML = data.nomCommercial;
     leftFoot.appendChild(logoFooter);
 
@@ -249,10 +255,10 @@ fetch(API_URL)
     //classList
     topFoot.appendChild(rightFoot);
 
-    const footList = document.createElement('a');
-    //classList
-    list.forEach(element => {
-      footList.innerHTML += element;  
+    const footList = document.createElement('div');
+    footList.classList.add('foot-list');
+    list.forEach((element, i) => {
+      footList.innerHTML += `<a href="#${listHref[i]}" class="navList">` + element + "</a>";  
     });
     rightFoot.appendChild(footList);
 
