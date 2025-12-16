@@ -84,6 +84,8 @@ fetch(API_URL)
     //classList
     centerContainer.appendChild(productContainer);
 
+    //cards
+
     data.produits.forEach(cake => {
 
       const productCards = document.createElement('div');
@@ -122,6 +124,8 @@ fetch(API_URL)
     //classList
     serviceCenterContainer.appendChild(serviceContainer);
 
+    //cards
+
     
     // CREATE TEMOIGNAGE -- container (h2, p) and cards (name, exp, comms, note)
 
@@ -137,6 +141,8 @@ fetch(API_URL)
     const temoignageContainer = document.createElement('div');
     //classList
     temoignageCenterContainer.appendChild(temoignageContainer);
+
+    //cards
 
     
     // CREATE FOOTER -- logo icone - li - companyName - copyright cookie
