@@ -20,7 +20,7 @@ const listHref = ["hero", "product", "service", "avantage", "temoignage"];
 
 const avantageDesc = ["Une large sélection de pâtisseries artisanales, élaborées avec des ingrédients de qualité pour un plaisir gourmand et authentique.", "Des ingrédients soigneusement sélectionnés, de première qualité et majoritairement locaux pour révéler des saveurs authentiques etnaturelles.", "Une ambiance chaleureuse et conviviale, pensée pour votre confort, et une expérience gourmande unique à savourer."];
 
-// , "Des ingrédients soigneusement sélectionnés, de première qualité et majoritairement locaux pour révéler des saveurs authentiques etnaturelles.", "Une ambiance chaleureuse et conviviale, pensée pour votre confort, et une expérience gourmande unique à savourer."
+// let a = "";
 
 // let count = 0;
 
@@ -174,6 +174,14 @@ fetch(API_URL)
     avantageContainer.classList.add('container');
     avantageCenterContainer.appendChild(avantageContainer);
 
+    // test
+
+    // avantageDesc.forEach(element => {
+    //   a += element;
+    // });
+
+    // fin de test
+
     //cards
 
     data.avantagesClients.forEach((avantage, count) => {
@@ -193,7 +201,7 @@ fetch(API_URL)
       avantageCards.appendChild(avantageTitle);
 
       const avantagePara = document.createElement('p');
-      avantagePara.innerHTML = avantageDesc;
+      // avantagePara.innerHTML = ;
       avantageCards.appendChild(avantagePara);
 
     });
