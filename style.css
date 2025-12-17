@@ -6,7 +6,8 @@
   --logo: "Oleo Script Swash Caps", system-ui;
   --text: "Inter", sans-serif;
   --bs: 0 0 15px #5d302336;
-  --bshover: 0 0 15px #C08453;
+  --bshover: 0 0 15px #c08453be;
+  --bshoverwhite: 0 0 15px #fff8f836;
 }
 
 * {
@@ -119,6 +120,10 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  .btn {
+    margin-top: 50px;
+  }
 }
 
 .container {
@@ -171,6 +176,9 @@ img {
   text-align: center;
   gap: 20px;
   padding: 25px;
+  box-shadow: var(--bs);
+  border-radius: 15px;
+  transition: all 200ms;
 
   h3 {
     font-size: 25px;
@@ -187,13 +195,22 @@ img {
   }
 }
 
+.service-cards:hover {
+  box-shadow: var(--bshoverwhite);
+  transition: all 200ms;
+}
+
 /* AVANTAGE */
 
 .avantage-cards {
-  border: 2px solid var(--primary);
-}
-
-/* TEMOIGNAGE */
+  max-width: 338px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  padding: 25px;
+} 
 
 #temoignage {
   background-color: var(--primary);

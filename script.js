@@ -18,7 +18,11 @@ const list = ["Accueil", "Produits", "Services", "Avantages", "Temoignages"];
 
 const listHref = ["hero", "product", "service", "avantage", "temoignage"];
 
-let count = 0;
+const avantageDesc = ["Une large sélection de pâtisseries artisanales, élaborées avec des ingrédients de qualité pour un plaisir gourmand et authentique.", "Des ingrédients soigneusement sélectionnés, de première qualité et majoritairement locaux pour révéler des saveurs authentiques etnaturelles.", "Une ambiance chaleureuse et conviviale, pensée pour votre confort, et une expérience gourmande unique à savourer."];
+
+// , "Des ingrédients soigneusement sélectionnés, de première qualité et majoritairement locaux pour révéler des saveurs authentiques etnaturelles.", "Une ambiance chaleureuse et conviviale, pensée pour votre confort, et une expérience gourmande unique à savourer."
+
+// let count = 0;
 
 // GET THE JSON
 
@@ -28,9 +32,9 @@ fetch(API_URL)
   .then(response => response.json())
   .then(data => {
 
-    for (let i = 0; i < data.avantagesClients.length; i++) {
-      count++;
-    }
+    // for (let i = 0; i < data.avantagesClients.length; i++) {
+    //   count++;
+    // }
 
     // CREATE THE NAVBAR -- logo li button
       
@@ -175,19 +179,29 @@ fetch(API_URL)
     data.avantagesClients.forEach((avantage, count) => {
       
       const avantageCards = document.createElement('div');
-      avantageCards.classList.add('service-cards');
       avantageCards.classList.add('avantage-cards');
       avantageContainer.appendChild(avantageCards);
 
+      const avantageImg = document.createElement('p');
+      avantageImg.classList.add('avantage-image');
+      // avantageImg.innerHTML = ;
+      avantageCards.appendChild(avantageImg);
+
       const avantageTitle = document.createElement('h3');
-      avantageTitle.innerHTML = `Avantage ${count + 1}`;
+      // avantageTitle.innerHTML = `Avantage ${count + 1}`;
+      avantageTitle.innerHTML = avantage;
       avantageCards.appendChild(avantageTitle);
 
       const avantagePara = document.createElement('p');
-      avantagePara.innerHTML = avantage;
+      avantagePara.innerHTML = avantageDesc;
       avantageCards.appendChild(avantagePara);
 
     });
+
+    const btnMoreAvantage = document.createElement('a');
+    btnMoreAvantage.classList.add('btn');
+    btnMoreAvantage.innerHTML = "Voir Plus";
+    avantageCenterContainer.appendChild(btnMoreAvantage);
 
     
     // CREATE TEMOIGNAGE -- container (h2, p) and cards (name, exp, comms, note)
