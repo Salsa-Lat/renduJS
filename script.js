@@ -20,11 +20,6 @@ const listHref = ["hero", "product", "service", "avantage", "temoignage"];
 
 let count = 0;
 
-  for (let i = 0; i < 3; i++) {
-    count++;
-  }
-
-
 // GET THE JSON
 
 const API_URL = "https://js-dynamic-portfolio-data-makerslab-emlyon-cdweb-8f83155c64a0cc.gitlab.io/json/patisserie.json";
@@ -32,6 +27,10 @@ const API_URL = "https://js-dynamic-portfolio-data-makerslab-emlyon-cdweb-8f8315
 fetch(API_URL)
   .then(response => response.json())
   .then(data => {
+
+    for (let i = 0; i < data.avantagesClients.length; i++) {
+      count++;
+    }
 
     // CREATE THE NAVBAR -- logo li button
       
@@ -229,6 +228,7 @@ fetch(API_URL)
     foot.appendChild(topFoot);;
 
     const leftFoot = document.createElement('div');
+    leftFoot.classList.add('left-foot');
     topFoot.appendChild(leftFoot);
 
     const logoFooter = document.createElement('a');
@@ -238,45 +238,42 @@ fetch(API_URL)
     leftFoot.appendChild(logoFooter);
 
     const icones = document.createElement('div');
-    //classList
-    leftFoot.appendChild(icones);
-
-    const icone = document.createElement('p');
-    icone.innerHTML = `
+    icones.classList.add('icones-align');
+    icones.innerHTML = `
       <i class="fa-brands fa-facebook"></i>
       <i class="fa-brands fa-instagram"></i>
       <i class="fa-brands fa-x-twitter"></i>
       <i class="fa-brands fa-linkedin"></i>
       <i class="fa-brands fa-youtube"></i>
     `;
-    icones.appendChild(icone);
-
-    const rightFoot = document.createElement('div');
-    //classList
-    topFoot.appendChild(rightFoot);
+    leftFoot.appendChild(icones);
 
     const footList = document.createElement('div');
     footList.classList.add('foot-list');
     list.forEach((element, i) => {
       footList.innerHTML += `<a href="#${listHref[i]}" class="navList">` + element + "</a>";  
     });
-    rightFoot.appendChild(footList);
+    topFoot.appendChild(footList);
+
+    const downFootLogo = document.createElement('p');
+    downFootLogo.classList.add('down-logo');
+    downFootLogo.innerHTML = data.nomCommercial;
+    foot.appendChild(downFootLogo);
 
     const bottomFoot = document.createElement('div');
-    //classList
+    bottomFoot.classList.add('bottom-foot');
     foot.appendChild(bottomFoot);
 
     const copyright = document.createElement('p');
-    //classList
     copyright.innerHTML = `<i class="fa-regular fa-copyright"></i> 2025 - Salsabila LATASSE`;
     bottomFoot.appendChild(copyright);
 
     const cookie = document.createElement('div');
-    //classList
+    cookie.classList.add('cookie-align');
     cookie.innerHTML = `
-    <a href="">Politique de confidentialité</a>
-    <a href="">Condition d'utilisation</a>
-    <a href="">Paramètres des cookies</a>
+    <a href="" class="cookie">Politique de confidentialité</a>
+    <a href="" class="cookie">Condition d'utilisation</a>
+    <a href="" class="cookie">Paramètres des cookies</a>
     `;
     bottomFoot.appendChild(cookie);
 
