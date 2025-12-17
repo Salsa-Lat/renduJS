@@ -322,17 +322,3 @@ fetch(API_URL)
 
   })
   .catch(error => console.error('Erreur lors de la récupération des données :', error));
-
-
-
-// Vue sur internet
-// let prevScrollpos = window.pageYOffset;
-// window.onscroll = function() {
-// let currentScrollPos = window.pageYOffset;
-//   if (prevScrollpos > currentScrollPos) {
-//     document.getElementById("navbar").style.top = "0";
-//   } else {
-//     document.getElementById("navbar").style.top = "-100px";
-//   }
-//   prevScrollpos = currentScrollPos;
-// }

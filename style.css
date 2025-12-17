@@ -37,7 +37,7 @@ body {
   background-color: var(--main);
   position: fixed;
   width: 100%;
-  transition: top 0.3s;
+  z-index: 100;
 }
 
 .logo-nav {
