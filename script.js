@@ -20,7 +20,9 @@ const listHref = ["hero", "product", "service", "avantage", "temoignage"];
 
 const avantageDesc = ["Une large sélection de pâtisseries artisanales, élaborées avec des ingrédients de qualité pour un plaisir gourmand et authentique.", "Des ingrédients soigneusement sélectionnés, de première qualité et majoritairement locaux pour révéler des saveurs authentiques etnaturelles.", "Une ambiance chaleureuse et conviviale, pensée pour votre confort, et une expérience gourmande unique à savourer."];
 
-// let a = "";
+const emoticon = ["😋", "👌", "🥰"];
+
+const pfp = ["assets/cat.jpg", "assets/lucat.jpg", "assets/sillycat.jpg"];
 
 // let count = 0;
 
@@ -174,17 +176,9 @@ fetch(API_URL)
     avantageContainer.classList.add('container');
     avantageCenterContainer.appendChild(avantageContainer);
 
-    // test
-
-    // avantageDesc.forEach(element => {
-    //   a += element;
-    // });
-
-    // fin de test
-
     //cards
 
-    data.avantagesClients.forEach((avantage, count) => {
+    data.avantagesClients.forEach((avantage, index) => {
       
       const avantageCards = document.createElement('div');
       avantageCards.classList.add('avantage-cards');
@@ -192,7 +186,7 @@ fetch(API_URL)
 
       const avantageImg = document.createElement('p');
       avantageImg.classList.add('avantage-image');
-      // avantageImg.innerHTML = ;
+      avantageImg.innerHTML = emoticon[index];
       avantageCards.appendChild(avantageImg);
 
       const avantageTitle = document.createElement('h3');
@@ -201,7 +195,7 @@ fetch(API_URL)
       avantageCards.appendChild(avantageTitle);
 
       const avantagePara = document.createElement('p');
-      // avantagePara.innerHTML = ;
+      avantagePara.innerHTML = avantageDesc[index];
       avantageCards.appendChild(avantagePara);
 
     });
@@ -228,30 +222,46 @@ fetch(API_URL)
 
     //cards
 
-    data.temoignages.forEach(temoi => {
+    data.temoignages.forEach((temoi, index) => {
       
       const temoignageCards = document.createElement('div');
-      temoignageCards.classList.add('service-cards');
-      temoignageCards.classList.add('avantage-cards');
+      temoignageCards.classList.add('temoignage-cards');
       temoignageContainer.appendChild(temoignageCards);
+
+      const topTemoi = document.createElement('div');
+      topTemoi.classList.add('top-temoi');
+      temoignageCards.appendChild(topTemoi);
+
+      const imageTemoi = document.createElement('img');
+      imageTemoi.classList.add('image-temoi');
+      imageTemoi.src = pfp[index];
+      topTemoi.appendChild(imageTemoi);
+
+      const rightTopTemoi = document.createElement('div');
+      topTemoi.appendChild(rightTopTemoi);
 
       const temoignageName = document.createElement('h3');
       temoignageName.innerHTML = temoi.prenom;
-      temoignageCards.appendChild(temoignageName);
+      rightTopTemoi.appendChild(temoignageName);
 
       const temoignageExp = document.createElement('b');
       temoignageExp.innerHTML = temoi.typeExperience;
-      temoignageCards.appendChild(temoignageExp);
+      rightTopTemoi.appendChild(temoignageExp);
+
+      const rating = document.createElement('p');
+      rating.innerHTML = temoi.note + "/5";
+      rightTopTemoi.appendChild(rating);
 
       const comms = document.createElement('p');
       comms.innerHTML = temoi.commentaire;
       temoignageCards.appendChild(comms);
 
-      const rating = document.createElement('p');
-      rating.innerHTML = temoi.note + "/5";
-      temoignageCards.appendChild(rating);
-
     });
+
+    const btnMoreTemoignage = document.createElement('a');
+    btnMoreTemoignage.classList.add('btn');
+    btnMoreTemoignage.innerHTML = "Voir Plus";
+    temoignageCenterContainer.appendChild(btnMoreTemoignage);
 
     
     // CREATE FOOTER -- logo icone - li - companyName - copyright cookie
@@ -312,3 +322,17 @@ fetch(API_URL)
 
   })
   .catch(error => console.error('Erreur lors de la récupération des données :', error));
+
+
+
+// Vue sur internet
+// let prevScrollpos = window.pageYOffset;
+// window.onscroll = function() {
+// let currentScrollPos = window.pageYOffset;
+//   if (prevScrollpos > currentScrollPos) {
+//     document.getElementById("navbar").style.top = "0";
+//   } else {
+//     document.getElementById("navbar").style.top = "-100px";
+//   }
+//   prevScrollpos = currentScrollPos;
+// }
