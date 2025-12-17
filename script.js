@@ -249,7 +249,7 @@ fetch(API_URL)
       rightTopTemoi.appendChild(temoignageExp);
 
       const rating = document.createElement('p');
-      rating.innerHTML = temoi.note + "/5";
+      rating.innerHTML = "Note: " + temoi.note + "/5";
       rightTopTemoi.appendChild(rating);
 
       const comms = document.createElement('p');
