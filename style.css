@@ -1,7 +1,7 @@
 :root {
-  --primary: #5D3023;
-  --secondary: #C08453;
-  --main: #F4E0E0;
+  --primary: #C08453;
+  --secondary: #5D3023;
+  --main: #fff8f8;
   --bonus: #CF7128;
   --logo: "Oleo Script Swash Caps", system-ui;
   --text: "Inter", sans-serif;
@@ -19,7 +19,7 @@
 body {
   font-family: var(--text);
   background-color: var(--main);
-  color: var(--primary);
+  color: var(--secondary);
 }
 
 
@@ -37,7 +37,7 @@ body {
   font-family: var(--logo);
   font-size: 25px;
   text-decoration: none;
-  color: var(--primary);
+  color: var(--secondary);
 }
 
 .navListDiv {
@@ -47,7 +47,7 @@ body {
 }
 
 .navList {
-  color: var(--primary);
+  color: var(--secondary);
   text-decoration: none;
 }
 
@@ -56,10 +56,10 @@ body {
 }
 
 .btn {
-  background-color: var(--primary);
+  background-color: transparent;
   border: 2px solid var(--primary);
   padding: 10px 25px;
-  color: var(--main);
+  color: var(--primary);
   border-radius: 5px;
   text-decoration: none;
   transition: all 200ms;
@@ -67,8 +67,8 @@ body {
 
 .btn:hover {
   cursor: pointer;
-  background-color: var(--main);
-  color: var(--primary);
+  background-color: var(--primary);
+  color: var(--main);
   transition: all 200ms;
 }
 
@@ -83,13 +83,12 @@ body {
   color: var(--main);
 
   .btn {
-    background-color: transparent;
-    border: 2px solid var(--main);
+    background-color: var(--primary);
+    color: var(--main);
   }
 
   .btn:hover {
-    background-color: var(--main);
-    color: var(--primary);
+    background-color: transparent;
   }
 
 }
@@ -110,6 +109,11 @@ body {
 
 /* PRODUCTS */
 
+h2 {
+  font-size: 32px;
+  margin-bottom: 50px;
+}
+
 .center-container {
   padding: 75px 100px;
   display: flex;
@@ -117,16 +121,10 @@ body {
   align-items: center;
 }
 
-h2 {
-  font-size: 32px;
-  margin-bottom: 50px;
-}
-
 .container {
   display: flex;
   flex-wrap: wrap;
   gap: 25px;
-
 }
 
 img {
@@ -147,7 +145,8 @@ img {
   transition: all 200ms;
 
   h3 {
-    font-size: 25px;
+    font-size: 26px;
+    font-family: var(--logo);
   }
 }
 
@@ -175,6 +174,16 @@ img {
 
   h3 {
     font-size: 25px;
+  }
+
+  .btn {
+    border: 2px solid var(--main);
+    color: var(--main);
+  }
+
+  .btn:hover {
+    background-color: var(--main);
+    color: var(--primary);
   }
 }
 
@@ -236,11 +245,11 @@ img {
   justify-content: space-between;
   padding: 30px 100px 75px;
   font-size: 13px;
-  border-top: 1px solid var(--primary);
+  border-top: 1px solid var(--secondary);
 }
 
 .cookie {
-  color: var(--primary);
+  color: var(--secondary);
 }
 
 .cookie-align {

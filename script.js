@@ -111,6 +111,12 @@ fetch(API_URL)
       productCards.appendChild(productDesc);
       
     });
+
+    const btnMore = document.createElement('a');
+    btnMore.classList.add('btn');
+    btnMore.innerHTML = "Voir Plus";
+    centerContainer.appendChild(btnMore);
+
     
     // CREATE SERVICE -- container (h2, p) and cards (name, desc)
 
@@ -141,6 +147,11 @@ fetch(API_URL)
       const serviceDesc = document.createElement('p');
       serviceDesc.innerHTML = serv.description;
       serviceCards.appendChild(serviceDesc);
+
+      const buttonCommand = document.createElement('a');
+      buttonCommand.classList.add('btn');
+      buttonCommand.innerHTML = "Commander";
+      serviceCards.appendChild(buttonCommand);
 
     });
 
